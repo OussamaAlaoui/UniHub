@@ -1,0 +1,165 @@
+*{
+    margin: 0;
+    max-width: 100%;
+    padding: 0;
+    
+}
+body {
+    margin: 0;
+    font-family: Nunito, sans-serif;
+    font-size: .9rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #212529;
+    text-align: left;
+    background-color: #f8fafc
+}
+
+
+
+.cardh
+{
+    display:grid;
+    grid-template-columns: 50% 50%;
+    margin:auto;
+}
+/*------------------------my-css--------------------------*/
+#email,
+#password {
+
+
+
+    color: #333333;
+    width: 85%;
+
+    padding-bottom: none !important;
+    padding-left: 10%;
+    font-size: 18px;
+    padding-top: 0 3% 0 3%;
+    margin-bottom: 5%;
+
+}
+
+.form-control {
+    font-size: 18px;
+    color: #333333;
+    display: block;
+    outline: none;
+    border: none;
+    background-color: white !important;
+    margin-top: 10px;
+
+    border-bottom: 2px solid gray;
+}
+
+
+
+.card {
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: .25rem;
+}
+
+.card-header {
+    padding: .75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: rgba(0, 0, 0, .03);
+    border-bottom: 1px solid rgba(0, 0, 0, .125)
+}
+
+.card-header {
+    padding: .75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: rgba(0, 0, 0, .03);
+    border-bottom: 1px solid rgba(0, 0, 0, .125)
+}
+
+.Adresse,
+.passtitle,
+.title {
+    font-family: 'Hepta Slab', serif;
+    margin-top: 7%;
+    margin-bottom: 7%;
+    font-size: 20px;
+    padding: 0;
+}
+
+
+
+.card-body {
+
+    width: 100%;
+    padding: 10px;
+}
+
+
+.card-body i {
+    position: absolute;
+    padding: 0 5px 10px 7px;
+    color: #9f9f9f;
+    top: 14%;
+    font-size: 20px;
+
+
+}
+
+.card input[type="email"]:focus,
+input[type="password"]:focus {
+    border-bottom: 3px solid #00B847;
+}
+
+.cardh {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin: auto;
+}
+/*----------------NAV----------------*/
+#navbarSupportedContent
+{
+    float:right;
+}
+.container-r
+{
+    width: 100%;
+}
+.card-body-ac
+{
+    display: grid;
+    grid-template-columns: 80% auto ;
+    padding:10px;
+}
+#removes
+{
+    margin-right: 10px;
+}
+.card-body-au
+{
+    display: grid ;
+    padding: 10px;
+    grid-template-columns: 50% 50%;
+
+
+}
+#adm
+{
+    float: right;
+    margin-right:5px;
+}
+#user_name
+{
+    justify-items: center;
+    align-content: center;
+}
+.input-prof-body
+{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 50%  50%;
+}
