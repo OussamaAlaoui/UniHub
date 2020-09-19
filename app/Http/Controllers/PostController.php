@@ -45,11 +45,11 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-      
+  
         $validator = Validator::make($request->all(), [
             'description'          => 'required',
         ]);
-         
+        
         $this->validate($request,[
             'body_text'=>'required',
             'ptype'=>'required',

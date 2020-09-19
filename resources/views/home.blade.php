@@ -208,7 +208,6 @@
                 </div>
                 @endif
             <div class="post_smth">
-                {{-- radio for subjects  --}}
                 <form method="POST" action="{{route('post.store') }}" enctype="multipart/form-data" >
                     @csrf
                 <div class="select">
@@ -235,7 +234,12 @@
                         Photo
                     </label>
                     <input id="file-upload" name="image" type="file"/>
-
+                
+                    <label for="file-upload" class="photo-upload">
+                        File Upload
+                    </label>
+                    <input id="file-upload" name="docs" type="file"/>
+                
                 <input type="submit" class="pub" value="publier">
                 </div>
             </form>

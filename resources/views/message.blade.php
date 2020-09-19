@@ -29,7 +29,7 @@
                                         <div class="received-msg">
                                             <div class="received-msg-inbox">
                                                
-                                                <p >  {{$message->message}}</p><br>
+                                                <p>  {{$message->message}}</p><br>
                                                 <span class='time'> {{ date('d M y,h:i a',strtotime($message->created_at))}}</span> 
                                             </div>
                                         </div>

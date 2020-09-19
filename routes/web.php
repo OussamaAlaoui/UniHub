@@ -48,3 +48,4 @@ Route::get('/admin_order', 'Admin_Order_Controller@index')->name('Admin_order');
 Route::post('/admin_order', 'Admin_Order_Controller@Process_Order')->name('Process_Order');
 Route::get('/activate_user', 'ActivationController@index')->name('active');
 Route::post('/activate_user', 'ActivationController@activate')->name('active');
+Route::get('/files/create', 'DocumentController@create');

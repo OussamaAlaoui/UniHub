@@ -5,13 +5,14 @@ UniHub is a website for students, teachers and administrators of a university. I
 1. Either fork or download the app and open the folder in your ide of choice
 2. Install Larvel 7 https://laravel.com/docs/8.x/installation
 3. Install web server solution stack package like XAMPP
+4. To use the chat function you need to get your Pusher informations by creating your own Pusher account and changing PUSHER_APP_ID, PUSHER_APP_KEY, PUSHER_APP_SECRET in your **.env** file for more check https://pusher.com . 
 
 ## How to use UniHub 
 Since every one uses some kind of social media platform, UniHub is builed prettymuch arround the same style so it will be much easier for users to use it without a problem     
     1. you need to create an account and wait for the activation from the admin 
     2. if you already have an account you can login then you can use all the featers avalible 
 
-## Featers 
+## Features 
 ### Login & Resgistration pages
 - In the menu bar you have the option to login or register "sign up" 
 - If you are a new user you need to register all your information in the registration page 
@@ -39,7 +40,10 @@ Since every one uses some kind of social media platform, UniHub is builed pretty
     3. **Add Users** Professors and other admins are added from this page by the admin 
     4. **View Orders** the admin sees the list of requests for document 
     5. **Modify Statut** Here the admin can change the user's role from a student to a delegate or vice versa using the user's id 
-
+## Upcoming Features
+- Uploading different types of files 
+- Downloading posts 
+- Repporting posts 
 ## Contact
 Oussama Alaoui Ismaili - ousalis99@gmail.com
 Project Link: https://github.com/OussamaAlaoui/Budget-app
