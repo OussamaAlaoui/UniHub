@@ -80,7 +80,6 @@
                     <div class ="friend_profile" id={{ $delegat->user_id }}> 
                        
                         @if($delegat->unread)
-                            
                              <span class="pending">{{$delegat->unread}}</span>
                         @endif
                     
@@ -208,7 +207,7 @@
                 </div>
                 @endif
             <div class="post_smth">
-                <form method="POST" action="{{route('post.store') }}" enctype="multipart/form-data" >
+                <form method="POST" action="/files" enctype="multipart/form-data" >
                     @csrf
                 <div class="select">
                 <div id="slect_ti">Please select what major is concerned by the post:</div>
@@ -235,10 +234,10 @@
                     </label>
                     <input id="file-upload" name="image" type="file"/>
                 
-                    <label for="file-upload" class="photo-upload">
+                    <label for="docs-upload" class="photo-upload">
                         File Upload
                     </label>
-                    <input id="file-upload" name="docs" type="file"/>
+                    <input id="docs-upload" name="docs" type="file"/>
                 
                 <input type="submit" class="pub" value="publier">
                 </div>

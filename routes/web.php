@@ -21,8 +21,10 @@ Route::get('/','PagesController@welcome')->name('welcome');
 
 Route::get('/register','RegisterController@register')->name('register');
 Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('post', 'PostController');
+
 // Route::resource('report', 'ReportController');
+Route::get('/files/create', 'DocumentController@create');
+Route::post('/files', 'DocumentController@store');
 Route::post('/profile','UserController@update_photo'); 
 Route::get('/profile','UserController@profile')->name('profile');
 Route::post('/create_group','AdminController@create_groups');
@@ -48,4 +50,3 @@ Route::get('/admin_order', 'Admin_Order_Controller@index')->name('Admin_order');
 Route::post('/admin_order', 'Admin_Order_Controller@Process_Order')->name('Process_Order');
 Route::get('/activate_user', 'ActivationController@index')->name('active');
 Route::post('/activate_user', 'ActivationController@activate')->name('active');
-Route::get('/files/create', 'DocumentController@create');
