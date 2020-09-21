@@ -17,7 +17,13 @@ class DocumentController extends Controller
      */
     public function index()
     {
-        //
+        // $images=images::all();
+        // $documents=Documents::all();
+        $posts=post::leftjoin('documents','documents.post_id','=','posts.id')
+        ->leftjoin('images','images.post_id','=','posts.id')
+        ->get();
+     
+        return view('home',compact('posts'));
     }
 
     /**
@@ -61,7 +67,8 @@ class DocumentController extends Controller
         {
             $file=$request->file('docs');
             $filename=time().'.'.$file->getClientOriginalExtension();
-            $request->file('docs')->move('storage/'.$filename);
+            $request->file('docs')->move('storage/uploads/'.$filename);
+            $path=$request->file('docs')->storeAs('public/uploads',$filename);
             $doc=new Documents;  
             $doc->post_id=$post->id;
             $doc->file=$filename;
@@ -76,9 +83,12 @@ class DocumentController extends Controller
             $filename=pathinfo($filenameWithExt,PATHINFO_FILENAME);
             $extension=$request->file('image')->getClientOriginalExtension();
             $fileNameToStore=$filename.'_'.time().'.'.$extension; 
+            $path=$request->file('image')->storeAs('public/uploads',$fileNameToStore);
+            // dd($fileNameToStore);
             $image=new images;
             $image->image=$fileNameToStore;
             $image->post_id=$post->id;
+            $image->save();
         }
       
         return redirect('/home')->with('success','Post Created');

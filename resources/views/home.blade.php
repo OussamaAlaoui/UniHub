@@ -266,12 +266,11 @@
                   
                         <div class="text-pub">
                         <p class="text-p">
-                            {{$p->text}}
+                            {{$p->description}}
                         </p>   </div>
                             <div >
-                                @if ($p->image!=NULL)
-                                <img class="img-pub"src="storage/post_images/{{$p->image}}">
-                                @endif
+                               
+                                <img class="img-pub"src="storage/uploads/{{$p->image}}">
                             </div>
                       
                  
@@ -323,55 +322,5 @@
           </div>
 </div>
 </div>
-{{--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
- <script>
 
-    $(".report").on("click", function(){
-        var postid = $(this).attr("data-id");
-        //alert("The data-id of clicked item is: " + dataId);
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        $.ajax({
-            url: "{{ route('report.store') }}",
-            type:"POST",
-            data: {post_id: postid},
-            dataType: "json",
-            success: function(result){
-                /*var selector = $(this).attr('data-id', postid);*/
-
-
-
-               /* var value = $(selector).find('button').addClass('test');*/
-                if(result.msg){ 
-                    $('button[data-id = '+postid+']').addClass('markReport');
-                    $('button[data-id = '+postid+']').removeClass('report');
-                    Swal.fire(
-                        'Success!',
-                        'Successfully Report Post.',
-                        'success'
-                        )
-
-                }else{
-                    Swal.fire(
-                        'Error!',
-                        'Error reporting post.',
-                        'error'
-                        )
-                }
-            },
-            error: function(){
-                Swal.fire(
-                    'Error!',
-                    'Error reporting post.',
-                    'error'
-                    )
-            }   
-        });
-    });
-
-
-</script> --}}
 @endsection

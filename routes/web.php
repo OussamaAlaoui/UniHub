@@ -25,6 +25,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Route::resource('report', 'ReportController');
 Route::get('/files/create', 'DocumentController@create');
 Route::post('/files', 'DocumentController@store');
+Route::get('/files', 'DocumentController@index');
+
 Route::post('/profile','UserController@update_photo'); 
 Route::get('/profile','UserController@profile')->name('profile');
 Route::post('/create_group','AdminController@create_groups');
