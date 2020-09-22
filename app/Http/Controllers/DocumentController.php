@@ -111,12 +111,13 @@ class DocumentController extends Controller
      */
     public function show($id)
     {
-         $file=Documents::find($id);
-         return view('/home',compact('file'));
+        //  $file=Documents::find($id);
+        //  return view('/home',compact('file'));
     }
     public function download($file)
     {
-       
+      
+       return response()->download('storage/uploads/'.$file);
     }
     /**
      * Show the form for editing the specified resource.

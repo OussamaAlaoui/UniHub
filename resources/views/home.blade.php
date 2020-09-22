@@ -257,8 +257,10 @@
                     <span class ='post-tag'>{{$p->type_name}}</span>
                 </div>
                     <div class="action">
-                       <button class="dow"><i class="fa fa-download"></i></button>
-                      <button class="warn"><i class="fa fa-warning"></i></button>
+                        <form method="GET" action="/files/download/{{$p->file}}">
+                       <button class="dow" ><i class="fa fa-download"></i></button>
+                        </form>
+                    <button class="warn" ><i class="fa fa-warning"></i></button>
                     </div>
                 
                 </div> 

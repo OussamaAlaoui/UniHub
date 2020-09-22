@@ -25,9 +25,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Route::resource('report', 'ReportController');
 Route::get('/files/create', 'DocumentController@create');
 Route::post('/files', 'DocumentController@store');
-Route::get('/files/{id}', 'DocumentController@index');
-Route::get('/files/{id}', 'DocumentController@show');
-Route::get('/files/download/{id}', 'DocumentController@download');
+Route::get('/files/download/{file}', 'DocumentController@download');
 
 Route::post('/profile','UserController@update_photo'); 
 Route::get('/profile','UserController@profile')->name('profile');
