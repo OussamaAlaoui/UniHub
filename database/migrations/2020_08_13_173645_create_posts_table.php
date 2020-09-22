@@ -19,6 +19,8 @@ class CreatePostsTable extends Migration
             $table->foreignId('subject_id')->constrained();
             $table->foreignId('posttype_id')->constrained();
             $table->text('description');
+            $table->string('file')->nullable();
+            $table->boolean('is_image')->default(0);
             $table->boolean('is_pinned')->default(0);
             $table->boolean('is_reported')->default(0);
             $table->boolean('is_clean')->default(0);

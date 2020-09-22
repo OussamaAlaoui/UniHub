@@ -36,12 +36,11 @@ class HomeController extends Controller
     public function index()
     {
 
-        $posts=post::leftjoin('documents','documents.post_id','=','posts.id')
-        ->leftjoin('images','images.post_id','=','posts.id')
-        ->orderBy('posts.created_at', 'desc')
+        $posts=post::orderBy('posts.created_at', 'desc')
         ->join('users','users.id','posts.user_id')
         ->join('posttypes','posttypes.id','posts.posttype_id')
         ->get();
+
         $groups=[];
         $i=0;
        $groupIds = Groupusers::where('user_id',auth::user()->id)->get();

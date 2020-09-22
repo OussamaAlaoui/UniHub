@@ -8,6 +8,8 @@ use App\post;
 use App\Images;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use League\CommonMark\Block\Element\Document;
+
 class DocumentController extends Controller
 {
     /**
@@ -19,11 +21,14 @@ class DocumentController extends Controller
     {
         // $images=images::all();
         // $documents=Documents::all();
-        $posts=post::leftjoin('documents','documents.post_id','=','posts.id')
-        ->leftjoin('images','images.post_id','=','posts.id')
+        $posts=post::orderBy('posts.created_at', 'desc')
+        ->join('users','users.id','posts.user_id')
+        ->join('posttypes','posttypes.id','posts.posttype_id')
         ->get();
+
      
-        return view('home',compact('posts'));
+    
+        return view('/home',compact('posts'));
     }
 
     /**
@@ -55,27 +60,26 @@ class DocumentController extends Controller
            
         ]);   
        
-        $post=Post::create([
-            'user_id' => auth::id(),
-            'subject_id'=>$request->major,
-            'posttype_id' => $request->ptype,
-            'description' =>$request->body_text,
-        ]);
+        $post=new post;
+            $post->user_id = auth::id();
+            $post->subject_id=$request->major;
+            $post->posttype_id= $request->ptype;
+            $post->description =$request->body_text;
+    
        
-        $post->save();
+
         if($request->file('docs'))
         {
             $file=$request->file('docs');
             $filename=time().'.'.$file->getClientOriginalExtension();
-            $request->file('docs')->move('storage/uploads/'.$filename);
-            $path=$request->file('docs')->storeAs('public/uploads',$filename);
-            $doc=new Documents;  
-            $doc->post_id=$post->id;
-            $doc->file=$filename;
-            $doc->save();
+            //$request->file('docs')->move('storage/uploads/'.$filename);  
+            $path=$request->file('docs')->storeAs('public/uploads/',$filename);
+        
+          
+            $post->file=$filename;
         }
         else if($request->file('image'))
-        {
+        { 
             $this->validate($request,[
                 'image'=>'image|nullable|max:1999'
             ]);   
@@ -83,14 +87,19 @@ class DocumentController extends Controller
             $filename=pathinfo($filenameWithExt,PATHINFO_FILENAME);
             $extension=$request->file('image')->getClientOriginalExtension();
             $fileNameToStore=$filename.'_'.time().'.'.$extension; 
-            $path=$request->file('image')->storeAs('public/uploads',$fileNameToStore);
+            $path=$request->file('image')->storeAs('public/uploads/',$fileNameToStore);
             // dd($fileNameToStore);
-            $image=new images;
-            $image->image=$fileNameToStore;
-            $image->post_id=$post->id;
-            $image->save();
+            $post->is_image=1;
+            $post->file=$fileNameToStore;
+          
         }
-      
+        else 
+        {
+            $filename=NULL;
+            $post->file=$filename;
+        }
+        $post->save();
+
         return redirect('/home')->with('success','Post Created');
     }
 
@@ -102,9 +111,13 @@ class DocumentController extends Controller
      */
     public function show($id)
     {
-        //
+         $file=Documents::find($id);
+         return view('/home',compact('file'));
     }
-
+    public function download($file)
+    {
+       
+    }
     /**
      * Show the form for editing the specified resource.
      *

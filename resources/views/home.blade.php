@@ -269,8 +269,14 @@
                             {{$p->description}}
                         </p>   </div>
                             <div >
-                               
-                                <img class="img-pub"src="storage/uploads/{{$p->image}}">
+                                @if($p->file!=NULL)
+                                    @if($p->is_image)
+                                        <img class="img-pub"src="storage/uploads/{{$p->file}}">
+                                    @else
+                                        <p> <iframe class="doc-pub"src="storage/uploads/{{$p->file}}" frameborder="0" height="400"
+                                         width="98%">></iframe></p>
+                                @endif
+                                @endif
                             </div>
                       
                  
