@@ -22,7 +22,7 @@ Route::get('/','PagesController@welcome')->name('welcome');
 Route::get('/register','RegisterController@register')->name('register');
 Route::get('/home', 'HomeController@index')->name('home');
 
-// Route::resource('report', 'ReportController');
+
 Route::get('/files/create', 'DocumentController@create');
 Route::post('/files', 'DocumentController@store');
 Route::get('/files/download/{file}', 'DocumentController@download');
@@ -52,3 +52,4 @@ Route::get('/admin_order', 'Admin_Order_Controller@index')->name('Admin_order');
 Route::post('/admin_order', 'Admin_Order_Controller@Process_Order')->name('Process_Order');
 Route::get('/activate_user', 'ActivationController@index')->name('active');
 Route::post('/activate_user', 'ActivationController@activate')->name('active');
+Route::get('/report/{id}', 'ReportController@report');

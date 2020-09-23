@@ -41,9 +41,8 @@ Since every one uses some kind of social media platform, UniHub is builed pretty
     4. **View Orders** the admin sees the list of requests for document 
     5. **Modify Statut** Here the admin can change the user's role from a student to a delegate or vice versa using the user's id 
 ## Upcoming Features
-- Uploading different types of files 
-- Downloading posts 
 - Repporting posts 
+- Library for documents 
 ## Contact
 Oussama Alaoui Ismaili - ousalis99@gmail.com
 Project Link: https://github.com/OussamaAlaoui/Budget-app

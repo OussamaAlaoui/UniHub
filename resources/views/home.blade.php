@@ -260,7 +260,9 @@
                         <form method="GET" action="/files/download/{{$p->file}}">
                        <button class="dow" ><i class="fa fa-download"></i></button>
                         </form>
-                    <button class="warn" ><i class="fa fa-warning"></i></button>
+                        <form  method="GET" action="/report/{{$p->post_id}}">
+                            <button class="warn" ><i class="fa fa-warning"></i></button>
+                        </form>
                     </div>
                 
                 </div> 
