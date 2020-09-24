@@ -52,7 +52,7 @@ class HomeController extends Controller
         $i++;
        }  
       
-       $user_role="";
+      
        $students=student::where('user_id','=',auth::user()->id)->first();
         $teachers = Professor::join('users','users.id','=','professors.user_id')
         ->where('users.id','<>',auth::user()->id)
@@ -79,7 +79,7 @@ class HomeController extends Controller
        ->get();
        $majors=major::all();
        $posttypes=posttype::all();
-
+       
         if( $user_role->name =='student')
         {
           //dd($students);

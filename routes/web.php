@@ -53,3 +53,5 @@ Route::post('/admin_order', 'Admin_Order_Controller@Process_Order')->name('Proce
 Route::get('/activate_user', 'ActivationController@index')->name('active');
 Route::post('/activate_user', 'ActivationController@activate')->name('active');
 Route::get('/report/{id}', 'ReportController@report');
+Route::get('/reports', 'ReportController@list_reports')->name("reports");
+Route::post('/verify_report/{id}', 'ReportController@verify_reports');

@@ -34,7 +34,7 @@ class Admin_Order_Controller extends Controller
 
     }
 
-    public function Process_Order(request $request)
+    public function Process_Order(Request $request)
     {
         //$validadtion="";
         $user_role = db::table('roles')

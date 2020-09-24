@@ -100,6 +100,14 @@
                                                 
                                                  
                                         </a>     @endif
+                                        @if($user_role->name=='admin' ) 
+                                        <a class="dropdown-item"  href="/reports">
+                                         
+                                        
+                                                    {{ __('Posts Reports') }}   
+                                                
+                                                   
+                                        </a> @endif
                                          @if($user_role->name=='student' || $user_role->name=='delegate' ) 
                                         <a class="dropdown-item"  href="{{ route('order') }}">
                                          
@@ -108,6 +116,7 @@
                                                 
                                                    
                                         </a> @endif
+                                      
                                         @if($user_role->name=='admin' ) 
                                         <a class="dropdown-item"  href="{{ route('modify_statut') }}">
                                          
