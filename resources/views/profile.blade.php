@@ -7,7 +7,7 @@
             <div class="card">
               <div class="card-header">
                 <div class="pro_grid_pic">
-                <img src="{{asset('storage/uploads/'.Auth::user()->profilepic )}}"  ></div> <div> <h2 id='user_name'style = "text-transform:capitalize;">{{Auth::user()->name}}</h2></div>
+                <img src="{{asset('storage/uploads/'.Auth::user()->profilepic )}}"  ></div> <div> <h2 id='user_name'style = "text-transform:capitalize;">{{Auth::user()->first_name}} {{Auth::user()->last_name}}</h2></div>
            </div>     
            <div class="card-body">
             

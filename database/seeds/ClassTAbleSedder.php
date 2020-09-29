@@ -13,18 +13,18 @@ class ClassTAbleSedder extends Seeder
         public function run()
         {
             Class_l::truncate();
-            Class_l::create(['level'=>'3','major'=>'IIR','c_id'=>'1','city'=>'Rabat']);
-            Class_l::create(['level'=>'3','major'=>'IIR','c_id'=>'2','city'=>'Rabat']);
-            Class_l::create(['level'=>'3','major'=>'IIR','c_id'=>'3','city'=>'Rabat']);
-            Class_l::create(['level'=>'3','major'=>'IIR','c_id'=>'4','city'=>'Rabat']);
-            Class_l::create(['level'=>'3','major'=>'IIR','c_id'=>'5','city'=>'Rabat']);
+            Class_l::create(['level'=>'3','major'=>'CS','c_id'=>'1']);
+            Class_l::create(['level'=>'3','major'=>'CS','c_id'=>'2']);
+            Class_l::create(['level'=>'3','major'=>'CS','c_id'=>'3']);
+            Class_l::create(['level'=>'3','major'=>'CS','c_id'=>'4']);
+            Class_l::create(['level'=>'3','major'=>'FI','c_id'=>'5']);
 
-            Class_l::create(['level'=>'2','major'=>'AP','c_id'=>'2','city'=>'Rabat']);
-            Class_l::create(['level'=>'2','major'=>'AP','c_id'=>'1','city'=>'Rabat']);
-            Class_l::create(['level'=>'2','major'=>'AP','c_id'=>'3','city'=>'Rabat']);
-            Class_l::create(['level'=>'2','major'=>'AP','c_id'=>'4','city'=>'Rabat']);
-            Class_l::create(['level'=>'2','major'=>'AP','c_id'=>'5','city'=>'Rabat']);
-            Class_l::create(['level'=>'2','major'=>'AP','c_id'=>'6','city'=>'Rabat']);
+            Class_l::create(['level'=>'2','major'=>'CE','c_id'=>'2']);
+            Class_l::create(['level'=>'2','major'=>'CE','c_id'=>'1']);
+            Class_l::create(['level'=>'2','major'=>'CE','c_id'=>'3']);
+            Class_l::create(['level'=>'2','major'=>'CF','c_id'=>'4']);
+            Class_l::create(['level'=>'2','major'=>'CF','c_id'=>'5']);
+            Class_l::create(['level'=>'2','major'=>'FI','c_id'=>'6']);
         
     
         }

@@ -11,9 +11,9 @@ class MajorSeeder extends Seeder
      */
     public function run()
     {
-        major::create(['major_name'=>'Computer Science']);
-        major::create(['major_name'=>'Computer Networking']);
-        major::create(['major_name'=>'Civil Engineering']);
-        major::create(['major_name'=>'finance']);
+        major::create(['major_name'=>'CS']);
+        major::create(['major_name'=>'CN']);
+        major::create(['major_name'=>'CE']);
+        major::create(['major_name'=>'FI']);
     }
 }

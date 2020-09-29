@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="containe">
- 
+
         <div class="home_page">   
      
             <div class="Social"> 
@@ -12,7 +12,7 @@
                     </div>
                         <div class="profile_infos"> 
                             <hr>
-                            <div  id="infof"style = "text-transform:capitalize;">{{Auth::user()->name}}</div>
+                            <div  id="infof"style = "text-transform:capitalize;">{{Auth::user()->first_name}} {{Auth::user()->last_name}} </div>
                             <hr>
                             <div id="infof" style = "text-transform:capitalize;">{{$user_role->name}}</div>
                             <hr>
@@ -50,7 +50,7 @@
                 
                 <div class='profile-cover' ><img class="friend_profile_pic"  src="{{asset('storage/uploads/'.$admin->profilepic )}}" ></div>
                 <div>
-                <div class='name' style ="text-transform:capitalize;">{{$admin->name}}</div>                  
+                <div class='name' style ="text-transform:capitalize;">{{$admin->first_name}}{{$admin->last_name}}</div>                  
                 <div class='email'>{{$admin->email}}</div>
                 
                 </div> 
@@ -69,7 +69,7 @@
                 
                 <div class='profile-cover' ><img class="friend_profile_pic"  src="{{asset('storage/uploads/'.$teacher->profilepic )}}" ></div>
                 <div>
-                <div class='name' style ="text-transform:capitalize;">{{$teacher->name}}</div>                  
+                <div class='name' style ="text-transform:capitalize;">{{$teacher->first_name}}{{$teacher->last_name}}</div>                  
                 <div class='email'>{{$teacher->email}}</div>
                 </div> 
                 </div>
@@ -85,35 +85,30 @@
                     
                     <div class='profile-cover' ><img class="friend_profile_pic"  src="{{asset('storage/uploads/'.$delegat->profilepic )}}" ></div>
                     <div>
-                    <div class='name' style ="text-transform:capitalize;">{{$delegat->name}}</div>                  
+                    <div class='name' style ="text-transform:capitalize;">{{$delegat->first_name}}{{$delegat->last_name}}</div>                  
                     <div class='email'>{{$delegat->email}}</div>
                     </div> 
                     </div>
               
                    @endforeach 
-              
-                @endif
-                {{-- //////////////////////////////////////////////////// --}}
-
-                @if($user_role->name=='delegate' )
-                
-          
-                @foreach($studentss as $student)
+                   @foreach($studentss as $student)
              
-                <div class ="friend_profile" id="{{ $student->user_id }}"> 
+                   <div class ="friend_profile" id="{{ $student->user_id }}"> 
+   
+                       @if($student->unread)
+                           
+                            <span class="pending">{{$student->unread}}</span>
+                       @endif
+                   <div class='profile-cover' ><img class="friend_profile_pic"  src="{{asset('storage/uploads/'.$student->profilepic )}}" ></div>
+                   <div>
+                   <div class='name' style ="text-transform:capitalize;">{{$student->first_name}}{{$student->last_name}}</div>                  
+                   <div class='email'>{{$student->email}}</div>
+                   </div> 
+                   </div>
+                  @endforeach 
+                @endif
+              
 
-                    @if($student->unread)
-                        
-                         <span class="pending">{{$student->unread}}</span>
-                    @endif
-                <div class='profile-cover' ><img class="friend_profile_pic"  src="{{asset('storage/uploads/'.$student->profilepic )}}" ></div>
-                <div>
-                <div class='name' style ="text-transform:capitalize;">{{$student->name}}</div>                  
-                <div class='email'>{{$student->email}}</div>
-                </div> 
-                </div>
-               @endforeach 
-              @endif
               
  {{-- //////////////////////////////////////////////////// --}}
 
@@ -132,7 +127,7 @@
                 
                 <div class='profile-cover' ><img class="friend_profile_pic"  src="{{asset('storage/uploads/'.$delegat->profilepic )}}" ></div>
                 <div>
-                <div class='name' style ="text-transform:capitalize;">{{$delegat->name}}</div>                  
+                <div class='name' style ="text-transform:capitalize;">{{$delegat->first_name}}{{$delegat->last_name}}</div>                  
                 <div class='email'>{{$delegat->email}}</div>
                 </div> 
                 </div>
@@ -157,7 +152,7 @@
                 
                 <div class='profile-cover' ><img class="friend_profile_pic"  src="{{asset('storage/uploads/'.$admin->profilepic )}}" ></div>
                 <div>
-                <div class='name'style ="text-transform:capitalize;" >{{$admin->name}}</div>                  
+                <div class='name'style ="text-transform:capitalize;" >{{$admin->first_name}} {{$admin->last_name}}</div>                  
                 <div class='email'>{{$admin->email}}</div>
                 </div> 
                 </div>
@@ -173,7 +168,7 @@
                 
                 <div class='profile-cover' ><img class="friend_profile_pic"  src="{{asset('storage/uploads/'.$delegat->profilepic )}}" ></div>
                 <div>
-                <p class='name' style ="text-transform:capitalize;">{{$delegat->name}}</p>                  
+                <p class='name' style ="text-transform:capitalize;">{{$delegat->first_name}} {{$delegat->last_name}}</p>                  
                 <p class='email'>{{$delegat->email}}</p>
                 </div> 
                 </div>
@@ -245,17 +240,23 @@
             </div>
                <div class="all-posts">
                @foreach ($posts as $p)
+               @if($user_role->name=='student' )  
+               @foreach($studentss as $student)
+               @foreach($classes as $cl )   
+               @if($student->class == $cl->level.$p->major_name.$cl->c_id)
             <div class="post">
-           
-              <div class="post_head">
-                    <div class="pic">
+         
+              <div class="post_head">    
+             
+                    <div class="pic">     
+                       
                         <img class="pro_pic" src="storage/uploads/{{$p->profilepic}}">
                     </div>
                     <div class="post-info">
                     <div class="user_name">{{$p->name}}</div>
                     <span class='time-pub'>{{$p->created_at}}</span>
                     <span class ='post-tag'>{{$p->type_name}}</span>
-                </div>
+                </div> 
                     <div class="action">
                         <form method="GET" action="/files/download/{{$p->file}}">
                        <button class="dow" ><i class="fa fa-download"></i></button>
@@ -266,8 +267,12 @@
                     </div>
                 
                 </div> 
-                 <div class="post_body">
-                  
+                 <div class="post_body"> 
+                     
+                      
+
+                           
+                     
                         <div class="text-pub">
                         <p class="text-p">
                             {{$p->description}}
@@ -282,12 +287,61 @@
                                 @endif
                                 @endif
                             </div>
-                      
-                 
-               
+                    
                 </div> 
-              
-            </div> 
+            </div>  
+            @endif
+            @endforeach
+            @endforeach
+            @else 
+            <div class="post">
+         
+                <div class="post_head">    
+               
+                      <div class="pic">     
+                         
+                          <img class="pro_pic" src="storage/uploads/{{$p->profilepic}}">
+                      </div>
+                      <div class="post-info">
+                      <div class="user_name">{{$p->name}}</div>
+                      <span class='time-pub'>{{$p->created_at}}</span>
+                      <span class ='post-tag'>{{$p->type_name}}</span>
+                  </div> 
+                      <div class="action">
+                          <form method="GET" action="/files/download/{{$p->file}}">
+                         <button class="dow" ><i class="fa fa-download"></i></button>
+                          </form>
+                          <form  method="GET" action="/report/{{$p->post_id}}">
+                              <button class="warn" ><i class="fa fa-warning"></i></button>
+                          </form>
+                      </div>
+                  
+                  </div> 
+                   <div class="post_body"> 
+                       
+                        
+  
+                             
+                       
+                          <div class="text-pub">
+                          <p class="text-p">
+                              {{$p->description}}
+                          </p>   </div>
+                              <div >
+                                  @if($p->file!=NULL)
+                                      @if($p->is_image)
+                                          <img class="img-pub"src="storage/uploads/{{$p->file}}">
+                                      @else
+                                          <p> <iframe class="doc-pub"src="storage/uploads/{{$p->file}}" frameborder="0" height="400"
+                                           width="98%">></iframe></p>
+                                  @endif
+                                  @endif
+                              </div>
+                      
+                  </div> 
+              </div>  
+              @endif
+           
             @endforeach
             </div>  
         </div>

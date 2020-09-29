@@ -16,10 +16,10 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('first_name');
+            $table->string('last_name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('username');
             $table->string('profilepic')->default('profile.jpg');
             $table->boolean('is_admin');
             $table->integer('admin_id');

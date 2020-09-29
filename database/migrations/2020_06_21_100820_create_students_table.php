@@ -17,7 +17,7 @@ class CreateStudentsTable extends Migration
             $table->string('student_id');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->string('class')->references(array('level', 'name', 'city'))->on('classes');
+            $table->string('class')->references(array('level', 'name'))->on('classes');
             $table->string('guardian_email');
             $table->boolean('is_activated')->default(0);
             $table->timestamps();

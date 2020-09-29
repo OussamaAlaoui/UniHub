@@ -60,7 +60,7 @@
                        @else
                            <li class="nav-item dropdown">
                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                 <span class="caret" style = "text-transform:capitalize;">  {{ Auth::user()->name }} </span>
+                                 <span class="caret" style = "text-transform:capitalize;">  {{ Auth::user()->first_name }}  {{ Auth::user()->last_name }}</span>
                                </a>
 
                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

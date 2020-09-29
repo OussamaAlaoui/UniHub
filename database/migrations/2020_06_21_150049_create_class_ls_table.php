@@ -18,7 +18,6 @@ class CreateClassLsTable extends Migration
             $table->integer('level');
             $table->string('major');
             $table->string('c_id');
-            $table->string('city');
             $table->timestamps();
         });
     }

@@ -15,6 +15,7 @@ use App\posttype;
 use App\major;
 use App\Student;
 use App\Professor;
+use App\Class_l;
 class HomeController extends Controller
 {
     /**
@@ -39,6 +40,7 @@ class HomeController extends Controller
         $posts=post::orderBy('posts.created_at', 'desc')
         ->join('users','users.id','posts.user_id')
         ->join('posttypes','posttypes.id','posts.posttype_id')
+        ->join('majors','majors.id','=','posts.subject_id')
         ->get();
 
         $groups=[];
@@ -53,7 +55,8 @@ class HomeController extends Controller
        }  
       
       
-       $students=student::where('user_id','=',auth::user()->id)->first();
+       $students=student::where('students.user_id','=',auth::user()->id)->first();
+
         $teachers = Professor::join('users','users.id','=','professors.user_id')
         ->where('users.id','<>',auth::user()->id)
         ->get();
@@ -74,22 +77,23 @@ class HomeController extends Controller
        ->where('roleusers.role_id','=',2)
        ->get();
        $subjects =  Subject::all();
-       $studentss=user::join('roleusers','roleusers.user_id','=','users.id')
+       $studentss=student::join('users','users.id','=','students.user_id')
+       ->join('roleusers','roleusers.user_id','=','users.id')
        ->where('roleusers.role_id','=',4)
        ->get();
        $majors=major::all();
        $posttypes=posttype::all();
-       
+       $classes=class_l::all();
         if( $user_role->name =='student')
         {
-          //dd($students);
+          
            if($students->is_activated==1)
-           return view('/home')->with(compact('posts','users','majors','groups','subjects','posttypes','user_role','teachers','admins','delegate','studentss'));
+           return view('/home')->with(compact('posts','classes','users','majors','groups','subjects','posttypes','user_role','teachers','admins','delegate','studentss'));
              else 
-             return view('activacc')->with(compact('posts','majors','users','subjects','posttypes','groups','user_role','teachers','admins','delegate','studentss'));
+             return view('activacc')->with(compact('posts','classes','majors','users','subjects','posttypes','groups','user_role','teachers','admins','delegate','studentss'));
         }
          else 
-        return view('/home')->with(compact('posts','majors','users','subjects','groups','posttypes','user_role','teachers','admins','delegate','studentss'));
+        return view('/home')->with(compact('posts','classes','majors','users','subjects','groups','posttypes','user_role','teachers','admins','delegate','studentss'));
      
     }
     
