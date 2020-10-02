@@ -253,7 +253,8 @@
                         <img class="pro_pic" src="storage/uploads/{{$p->profilepic}}">
                     </div>
                     <div class="post-info">
-                    <div class="user_name">{{$p->name}}</div>
+                    <div class="user_name">{{$p->first_name}} {{$p->last_name}}</div>     
+
                     <span class='time-pub'>{{$p->created_at}}</span>
                     <span class ='post-tag'>{{$p->type_name}}</span>
                 </div> 
@@ -277,10 +278,10 @@
                         <p class="text-p">
                             {{$p->description}}
                         </p>   </div>
-                            <div >
+                            <div class="img-pub" >
                                 @if($p->file!=NULL)
                                     @if($p->is_image)
-                                        <img class="img-pub"src="storage/uploads/{{$p->file}}">
+                                        <img src="storage/uploads/{{$p->file}}">
                                     @else
                                         <p> <iframe class="doc-pub"src="storage/uploads/{{$p->file}}" frameborder="0" height="400"
                                          width="98%">></iframe></p>
@@ -303,7 +304,8 @@
                           <img class="pro_pic" src="storage/uploads/{{$p->profilepic}}">
                       </div>
                       <div class="post-info">
-                      <div class="user_name">{{$p->name}}</div>
+                        <div class="user_name">{{$p->first_name}} {{$p->last_name}}</div>     
+
                       <span class='time-pub'>{{$p->created_at}}</span>
                       <span class ='post-tag'>{{$p->type_name}}</span>
                   </div> 
@@ -318,19 +320,14 @@
                   
                   </div> 
                    <div class="post_body"> 
-                       
-                        
-  
-                             
-                       
                           <div class="text-pub">
                           <p class="text-p">
                               {{$p->description}}
                           </p>   </div>
-                              <div >
+                              <div class="img-pub">
                                   @if($p->file!=NULL)
                                       @if($p->is_image)
-                                          <img class="img-pub"src="storage/uploads/{{$p->file}}">
+                                          <img src="storage/uploads/{{$p->file}}">
                                       @else
                                           <p> <iframe class="doc-pub"src="storage/uploads/{{$p->file}}" frameborder="0" height="400"
                                            width="98%">></iframe></p>
